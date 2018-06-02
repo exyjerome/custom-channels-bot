@@ -113,6 +113,7 @@ commands
             if (channel) {
             	if (channel.members.array().length == 0) {
 	                channel.delete('Channel empty');
+                    store.del(key);
 	            }
             } else {
             	store.del(key);
@@ -145,10 +146,6 @@ commands
 		msg.react('👌');
 	})
 	.allow(ADMINS);
-
-commands.register('$abc', (m) => {
-    m.reply(JSON.stringify(emoji.data));
-}).allow(ALL);
 
 commands.on('message', (msg) => {
     log.message(msg);
