@@ -130,11 +130,11 @@ commands
 commands
 	.register('.channel help', (msg) => {
 		msg.channel.send(`
-Create a new public channel with the command \`$channel create public Channel Name\`
-Create a new private channel with the command \`$channel create private Channel Name\`
+Create a new public channel with the command \`.channel create public Channel Name\`
+Create a new private channel with the command \`.channel create private Channel Name\`
 
-If you've created a private channel, you can allow people to join with \`$channel add @username\`
-Removing them is as simple as \`$channel remove @username\`
+If you've created a private channel, you can allow people to join with \`.channel add @username\`
+Removing them is as simple as \`.channel remove @username\`
 `)
 	})
 	.allow(ALL);
