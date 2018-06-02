@@ -13,7 +13,7 @@ const ADMINS    = ['249292070475268096', '274966625310998528', '2851105136780247
 commands.setLogger(log);
 
 commands
-    .register('$channel create {string} {strplus}', (type, name, msg) => {
+    .register('.channel create {string} {strplus}', (type, name, msg) => {
         let category;
 
         if (cfg.has('category')) {
@@ -72,7 +72,7 @@ commands
     .allow(ALL);
 
 commands
-    .register('$channel delete', (msg) => {
+    .register('.channel delete', (msg) => {
         if (store.has(msg.author.id)) {
             let cid = store.get(msg.author.id);
             let channel = client.channels.find('id', cid);
@@ -89,7 +89,7 @@ commands
     .allow(ALL);
 
 commands
-    .register('$channel {string} {user}', (type, user, msg) => {
+    .register('.channel {string} {user}', (type, user, msg) => {
         if (store.has(msg.author.id)) {
             let usr = msg.guild.members.find('id', user);
             let chan = msg.guild.channels.find('id', store.get(msg.author.id));
@@ -107,7 +107,7 @@ commands
     .allow(ALL);
 
 commands
-    .register('$channel purge', (msg) => {
+    .register('.channel purge', (msg) => {
         Object.keys(store.data).forEach((key) => {
             let channel = msg.guild.channels.find('id', store.data[key]);
             if (channel) {
@@ -122,13 +122,13 @@ commands
     .allow(ADMINS);
 
 commands
-	.register('$regex', (msg) => {
+	.register('.regex', (msg) => {
 		msg.reply("```\n" + (commands.commands.map(c => c.regex)).join("\n") + '```');
 	})
 	.allow(ADMINS);
 
 commands
-	.register('$channel help', (msg) => {
+	.register('.channel help', (msg) => {
 		msg.channel.send(`
 Create a new public channel with the command \`$channel create public Channel Name\`
 Create a new private channel with the command \`$channel create private Channel Name\`
@@ -140,7 +140,7 @@ Removing them is as simple as \`$channel remove @username\`
 	.allow(ALL);
 
 commands
-	.register('$channel category {int}', (category, msg) => {
+	.register('.channel category {int}', (category, msg) => {
 		cfg.set('category', category);
 		msg.react('👌');
 	})
