@@ -152,6 +152,8 @@ Create a new private channel with the command \`.channel create private Channel 
 
 If you've created a private channel, you can allow people to join with \`.channel add @username\`
 Removing them is as simple as \`.channel remove @username\`
+
+Rename channels with \`.channel rename Channel Name\`
 `)
 	})
 	.allow(ALL);
