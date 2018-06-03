@@ -107,6 +107,22 @@ commands
     .allow(ALL);
 
 commands
+    .register('.channel rename {strplus}', (name, msg) => {
+        if (store.has(msg.author.id)) {
+            // let user = msg.guild.members.find('id')
+            let chan = msg.guild.channels.find('id', store.get(msg.author.id));
+
+            if (chan) {
+                chan.setName(name);
+                msg.react('👌');
+            }
+        } else {
+            return msg.reply('You don\'t have an active channel');
+        }
+    })
+    .allow(ALL)
+
+commands
     .register('.channel purge', (msg) => {
         Object.keys(store.data).forEach((key) => {
             let channel = msg.guild.channels.find('id', store.data[key]);
