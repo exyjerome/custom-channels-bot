@@ -40,7 +40,7 @@ class Command {
 			case '{url}':
 				return '(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9]\.[^\s]{2,}).*';
 			case '{user}':
-				return '(?:<@(?:(\!)?))([0-9]{0,18})(?:>)';
+				return '(?:<@(?:\!?))([0-9]{0,18})(?:>)';
 			case '{group}':
 				return '(?:<@&)([0-9]{0,18})(?:>)';
 		}
