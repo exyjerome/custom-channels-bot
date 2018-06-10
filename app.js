@@ -40,10 +40,11 @@ commands
                         id: msg.author.id
                     }])
                     .then((channel) => {
-                        channel.setParent(category)
-                        msg.member.setVoiceChannel(channel);
-                        store.set(msg.author.id, channel.id);
-                        msg.react('👌');
+                        channel.setParent(category).then((updated) => {
+                            msg.member.setVoiceChannel(channel);
+                            store.set(msg.author.id, channel.id);
+                            msg.react('👌');
+                        })
                     })
                 ;
             } else if (type == 'private') {
